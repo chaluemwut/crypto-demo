@@ -1,12 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
-// import { CustomersModule } from './customers/customers.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UserProfileModule } from './user_profile/user_profile.module';
-
+import { UserCoinModule } from './user_coin/user_coin.module';
 
 @Module({
   imports: [
@@ -21,17 +17,21 @@ import { UserProfileModule } from './user_profile/user_profile.module';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        // entities: [User, Customer],
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true,           
-      }),      
+        logging: true
+      }),
       inject: [ConfigService],
     }),
-    UsersModule,
+    UserCoinModule,
     UserProfileModule
     // CustomersModule, 
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  // controllers: [AppController],
+  // providers: [{
+  //   provide: ICoin,
+  //   useClass: CoingeckoImplementation
+  // }]
+  // providers: [AppService],
 })
 export class AppModule { }

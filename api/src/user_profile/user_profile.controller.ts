@@ -17,10 +17,10 @@ export class UserProfileController {
         return "Hello"
     }
 
-    @Post('asdfasdf')
+    @Post('login')
     async login(@Body() body) {
         try {
-            const userProfile = await this.userProfileService.findByUsername(body['username'])
+            const userProfile = await this.userProfileService.findByEmail(body['email'])
             if (userProfile == null) {
                 return { 'auth': -1 }
             }
@@ -28,7 +28,7 @@ export class UserProfileController {
             var result = bcrypt.compareSync(body.password, userProfile.password)
             const jwt = require('jsonwebtoken')
             if (result) {
-                const token = jwt.sign({ userId: userProfile.id }, this.configService.get('JWT_KEY'), { expiresIn: "200d" })
+                const token = jwt.sign({ userId: userProfile.user_id }, this.configService.get('JWT_KEY'), { expiresIn: "200d" })
                 return { 'auth': 1, message: 'pass', 'token': token }
             } else {
                 return { 'auth': 0 }
@@ -41,6 +41,10 @@ export class UserProfileController {
 
     @Post('save')
     createUserProfile(@Body() data) {
+        const bcrypt = require('bcryptjs');
+        const salt = bcrypt.genSaltSync(10);
+        const hashPassword = bcrypt.hashSync(data.password, salt);
+        data.password = hashPassword
         return this.userProfileService.createUser(data)
     }
 }

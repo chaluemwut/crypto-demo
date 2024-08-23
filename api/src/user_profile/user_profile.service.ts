@@ -13,7 +13,7 @@ export class UserProfileService {
         return this.userProfileRepository.save(data)
     }
 
-    findByUsername(username: string) {
-        return this.userProfileRepository.findOneBy({ username: username })
+    findByEmail(email: string) {
+        return this.userProfileRepository.findOneBy({ email: email })
     }
 }
