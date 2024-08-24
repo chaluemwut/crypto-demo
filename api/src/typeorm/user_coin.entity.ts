@@ -11,10 +11,13 @@ export class UserCoin {
   user_id: number;
 
   @Column()
-  currency: string;
+  network: string;
 
   @Column()
   address: string;
+
+  @Column('decimal', { precision: 10, scale: 2 })
+  price: number
 
   @CreateDateColumn()
   created_at: Date;

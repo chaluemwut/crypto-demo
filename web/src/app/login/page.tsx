@@ -14,7 +14,7 @@ export default function Login() {
         password: '',
     });
 
-    const handleInput = (e: any) => {
+    const handleInput = (e: { target: { name: any; value: any; }; }) => {
         setState({
             ...state,
             [e.target.name]: e.target.value
