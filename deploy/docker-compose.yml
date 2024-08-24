@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  web:
+    image: node:20.9.0
+    working_dir: /web  
+    volumes:
+      - ../web:/web
+    expose:
+      - 80
+    command: npm run dev
+
+  api:
+    image: node:20.9.0
+    working_dir: /api
+    volumes:
+      - ../api:/api
+    expose:
+      - 10000
+    command: npm start
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ../data/mysql/datafile:/var/lib/mysql
+      - ../data/mysql/mysql-files:/var/lib/mysql-files
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: pmt
