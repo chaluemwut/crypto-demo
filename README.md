@@ -1,10 +1,11 @@
 # crypto-demo
 
+# Project setup
 
-## Postman API Document
+# API Key setup
 
+# Postman API Document
+![Post man](resource/images/postman.png)
 
-https://www.coingecko.com/en/developers/dashboard
-
-
-https://kryptodian.com/#our-service||kryptodian-tab|2
+# Import JSON file to Postman
+File at resource/crypto-lab.postman_collection.json
