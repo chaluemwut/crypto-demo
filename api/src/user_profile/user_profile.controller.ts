@@ -1,6 +1,4 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { UserProfile } from "src/typeorm/user_profile.entity";
 import { UserProfileService } from "./user_profile.service";
 import { ConfigService } from "@nestjs/config";
 

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { UserCoin } from "src/typeorm/user_coin.entity";
+import { UserCoin } from "./user_coin.entity";
 import { ICoin } from "src/coin_adapter/icoin";
 import { UserCoinDTO } from "src/dto/user_coin_dto";
 

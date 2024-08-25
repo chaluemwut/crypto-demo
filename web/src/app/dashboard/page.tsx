@@ -33,11 +33,11 @@ export default function Dashboard() {
     ]
 
     const fetchData = () => {
-        // setLoad(true)
-        // instance.get('/user-coin/list').then((res) => {
-        //     setCoins(res.data)
-        //     setLoad(false)
-        // })
+        setLoad(true)
+        instance.get('/user-coin/list').then((res) => {
+            setCoins(res.data)
+            setLoad(false)
+        })
     }
 
     useEffect(() => {
