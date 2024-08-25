@@ -23,3 +23,6 @@ API_KEY_COINGECKO=COINGECKO api key
 
 # Import JSON file to Postman
 File at resource/crypto-lab.postman_collection.json
+
+# Unit testing and integration testing
+Unit testing and integration were developed in Front-end and Back-end.
