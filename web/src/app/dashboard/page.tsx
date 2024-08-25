@@ -82,9 +82,9 @@ export default function Dashboard() {
         <NavBar/>
 
         <div style={{ marginLeft: '5%', marginRight: '5%', marginTop: '1%' }}>
-            <div className="grid grid-rows-1 grid-flow-col gap-4">
+            <div key={'display-coin'} className="grid grid-rows-1 grid-flow-col gap-4">
                 {coinList.map((e) => {
-                    return <div style={{ cursor: 'pointer' }} onClick={() => setCoinSelectName(e['name'])}>
+                    return <div key={`i-${e['name']}`} style={{ cursor: 'pointer' }} onClick={() => setCoinSelectName(e['name'])}>
                         <div>{coinImage(e['name'])}</div>
                         <div className={(e['name'] == coinSelectName) ? 'text-blue-600' : 'text-blue-600/50'} style={{ marginTop: '10px' }}>
                             {e['name']}</div>
